@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.12.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/main.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <form id="form-create-task" action="">
+            <input id="text-task" type="text" placeholder="Введите задачу"><br>
+            <input id="btn-create-task" type="submit" value="Создать задачу">
+        </form>
+        <div class="list-btns">
+            <button id="btn-sort-by-name">Сортировать по имени
+                <i class="bi bi-sort-alpha-down"></i>
+            </button>
+            <button id="btn-sort-by-name-reverse">Сортировать по имени
+                <i class="bi bi-sort-alpha-down-alt"></i>
+            </button>
+            <button id="btn-show-important">Оставить только важные</button>
+            <input id="text-filter" type="text" placeholder="Имя задачи">
+            <button id="btn-filter-by-name">Фильтровать по имени</button>
+            <button id="btn-show-all">Показать все</button>
+        </div>
+        <div class="container">
+            <div class="task">
+                <span>Первое задание</span>
+            </div>
+            <div class="task important">
+                <span>Второе задание</span>
+            </div>
+            <div class="task important">
+                <span>Третье задание</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

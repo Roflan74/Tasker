@@ -1,0 +1,37 @@
+.wrapper {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+#form-create-task {
+    width: 300px;
+    border: 1px solid darkblue;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.container {
+    margin-top: 30px;
+    background-color: lightblue;
+    border: 1px solid darkblue;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.task {
+    border: 1px solid darkblue;
+    border-radius: 3px;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.important span::after {
+    content: "!";
+    color: red;
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+.list-btns {
+    margin-top: 30px;
+}
