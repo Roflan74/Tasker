@@ -11,7 +11,9 @@ btnCreateTask.addEventListener("click", function(event){
     let text = textTask.value;
     const newTask = document.createElement("div");
     newTask.classList.add("task");
-    newTask.innerHTML = `<span>${text}</span>`;
+    newTask.innerHTML = `<span>${text}</span>
+        <i tabindex="0" class="bi bi-pencil-fill btn-edit"></i>
+        <i tabindex="0" class="bi bi-x-circle-fill btn-remove"></i>`;
     container.append(newTask);
 
     tasks = document.querySelectorAll(".task"); // Обновление статичной коллекции
@@ -52,7 +54,7 @@ function compare(a, b) {
 btnSortByName.addEventListener("click", function() {
     let newTasks = [...tasks].sort(compare);
     container.innerHTML = "";
-    for(let i in newTasks) {
+    for (let i in newTasks) {
         container.append(newTasks[i]);
     }
 });
@@ -67,22 +69,70 @@ function compareReverse(a, b) {
 btnSortByNameReverse.addEventListener("click", function() {
     let newTasks = [...tasks].sort(compareReverse);
     container.innerHTML = "";
-    for(let i in newTasks) {
+    for (let i in newTasks) {
         container.append(newTasks[i]);
     }
 });
 
-/* Кнопка "Оставить только важные" */
-
-function filterImportant(a) {
-    if(a.classList.contains("important")) return 1;
-    else return -1;
-}
-
+/* Кнопка фильтрации важных задач */
 btnShowImportant.addEventListener("click", function() {
-    let newTasks = [...tasks].sort(filterImportant);
+    let newTasks = [...tasks];
     container.innerHTML = "";
-    for(let i in newTasks) {
+    for (let i in newTasks) {
+        if (newTasks[i].classList.contains("important")) {
+            container.append(newTasks[i]);
+        }
+    }
+});
+
+/* Кнопка фильтрации по имени */
+btnFilterByName.addEventListener("click", function() {
+    let sortText = textFilter.value;
+    let newTasks = [...tasks];
+    newTasks = newTasks.filter(function(item) {
+        return item.innerHTML.toLowerCase().indexOf(sortText.toLowerCase()) != -1;
+    });
+    container.innerHTML = "";
+    for (let i in newTasks) {
         container.append(newTasks[i]);
     }
-})
+});
+
+/* Показать все задачи */
+btnShowAll.addEventListener("click", function() {
+    let newTasks = [...tasks];
+    container.innerHTML = "";
+    for (let i in newTasks) {
+        container.append(newTasks[i]);
+    }
+});
+
+//#region  Удаление и редактирование задачи
+container.addEventListener("click", (event)=> {
+    const btn = event.target; // Элемент, по которому кликнул пользователь
+    if (btn.classList.contains("btn-remove")) {
+        console.log("Удаляем");
+        btn.closest(".task").outerHTML = "";
+    }
+    if (btn.classList.contains("btn-edit")) {
+        console.log("Редактируем");
+        btn.closest(".task").querySelector("span").setAttribute("contenteditable", "true");
+    }
+    tasks = document.querySelectorAll(".task");
+});
+//#endregion
+
+// #region Всплытие и погружение
+// const tags = document.querySelectorAll("*");
+// let i = 0;
+// for (let tag of tags) {
+//     tag.addEventListener("click", (event) => {
+//         i++;
+//         console.log("Этап " + i);
+//         console.log("Целевой элемент");
+//         console.log(event.target);
+//         console.log("Элемент, который поймал событие");
+//         console.log(event.currentTarget);
+//     }, true);
+// }
+// #endregion

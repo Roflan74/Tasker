@@ -25,13 +25,27 @@
     margin-bottom: 5px;
 }
 
-.important span::after {
+.important span::before {
     content: "!";
     color: red;
-    margin-left: 5px;
+    margin-right: 5px;
     font-weight: bold;
 }
 
 .list-btns {
     margin-top: 30px;
+}
+
+.btn-edit,
+.btn-remove {
+    color: darkblue;
+    margin-left: 5px;
+    transition: color 0.3s;
+}
+
+.btn-edit:hover, 
+.btn-edit:focus,
+.btn-remove:hover,
+.btn-remove:focus {
+    color: blueviolet;
 }
